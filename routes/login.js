@@ -1,7 +1,7 @@
 const express = require('express');
 const User = require('../models/User');
 const Doctor = require('../models/Doctor');
-const Admin = require('../models/Admin'); // Add this line
+const Admin = require('../models/Admin');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -14,14 +14,19 @@ router.post('/', async (req, res) => {
 
   try {
     let user;
+
+    // If role is provided, search accordingly
     if (role === 'doctor') {
       user = await Doctor.findOne({ email });
     } else if (role === 'admin') {
       user = await Admin.findOne({ email });
-    } else {
+    } else if (role === 'user') {
       user = await User.findOne({ email, role });
+    } else {
+      // If role not provided → auto-detect
+      user = await Admin.findOne({ email }) || await Doctor.findOne({ email }) || await User.findOne({ email });
     }
-    
+
     if (!user) {
       return res.status(400).send({ error: 'Invalid email or role' });
     }
@@ -32,8 +37,10 @@ router.post('/', async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id, role: user.role }, 'your_jwt_secret', { expiresIn: '24h' });
+
     res.send({ token, role: user.role });
   } catch (error) {
+    console.error('❌ Login Error:', error);
     res.status(500).send({ error: 'Server error' });
   }
 });
