@@ -2,7 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const Admin = require('./models/Admin');
 
-mongoose.connect('mongodb+srv://22bec091:Punit091!#@hostelmanagement.egsry85.mongodb.net/?retryWrites=true&w=majority&appName=hostelmanagement', {
+mongoose.connect('mongodb+srv://22bec091:Punit091%21%23@hostelmanagement.egsry85.mongodb.net/hms?retryWrites=true&w=majority&appName=hostelmanagement', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
