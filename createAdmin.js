@@ -22,6 +22,7 @@ async function createAdmin() {
     const admin = new Admin({
       firstName: 'Punit',
       lastName: 'Sharma',
+      
       email: 'admin@gmail.com',
       password: 'admin', // HASHED automatically by pre('save')
       role: 'admin',
