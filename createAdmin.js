@@ -22,9 +22,9 @@ async function createAdmin() {
     const admin = new Admin({
       firstName: 'Punit',
       lastName: 'Sharma',
-      
-      email: '22bec091@gmail.com',
-      password: 'Punit091!#', // HASHED automatically by pre('save')
+
+      email: 'Punit@gmail.com',
+      password: 'Punit@123', // HASHED automatically by pre('save')
       role: 'admin',
     });
 
