@@ -23,8 +23,8 @@ async function createAdmin() {
       firstName: 'Punit',
       lastName: 'Sharma',
       
-      email: 'admin@gmail.com',
-      password: 'admin', // HASHED automatically by pre('save')
+      email: '22bec091@gmail.com',
+      password: 'Punit091!#', // HASHED automatically by pre('save')
       role: 'admin',
     });
 
